@@ -1,12 +1,11 @@
-function UI() {
-  this.post = document.querySelector('#posts');
+function UI() {}
 
-  this.showPosts = (posts) => {
-    let output = '';
+UI.prototype.showPosts = (posts) => {
+  const post = document.querySelector('#posts');
+  let output = '';
 
-    posts.forEach((post) => {
-      console.log(post);
-      output += `
+  posts.forEach((post) => {
+    output += `
           <div class="card mb-3">
               <div class="card-body">
                   <h4 class="card-title>${post.title}</h4>
@@ -20,10 +19,8 @@ function UI() {
               </div>
           </div>
         `;
-    });
-
-    this.post.innerHTML = output;
-  };
-}
+  });
+  return (post.innerHTML = output);
+};
 
 export const ui = new UI();
