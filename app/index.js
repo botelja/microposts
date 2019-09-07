@@ -1,20 +1,13 @@
-import Http from './http.js';
+import { http } from './http';
+import { ui } from './ui';
 import './main.css';
 
-const data = {
-  name: 'Jhon Doe',
-  username: 'jhondoe',
-  email: 'john@doe.com'
-};
+// Get posts on DOM load
+document.addEventListener('DOMContentLoaded', getPosts);
 
-const http = new Http();
-
-// http
-//   .get('https://jsonplaceholder.typicode.com/todos/1')
-//   .then((data) => console.log(data))
-//   .catch((error) => console.log(error));
-
-http
-  .delete('https://jsonplaceholder.typicode.com/users/2')
-  .then((data) => console.log(data))
-  .catch((error) => console.log(error));
+function getPosts() {
+  http
+    .get('http://localhost:3000/posts')
+    .then((data) => ui.showPosts(data))
+    .catch((err) => console.log(err));
+}

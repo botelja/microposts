@@ -1,4 +1,4 @@
-export default function Http() {}
+function Http() {}
 
 Http.prototype.get = async (url) => {
   const response = await fetch(url);
@@ -47,3 +47,5 @@ Http.prototype.delete = async (url) => {
 
   return resData;
 };
+
+export const http = new Http();
